@@ -1,0 +1,20 @@
+{
+  "_doc": "Recorded retired model IDs for historical generation-ledger rows. New generation rows must use the current catalog. last_snapshot records historical source provenance; old snapshot files are not required at runtime.",
+  "retired": {
+    "explainer_video": {
+      "last_seen": "2026-08-01",
+      "last_snapshot": "models_explore_snapshot_2026-08-01.json",
+      "type": "video"
+    },
+    "gpt_image": {
+      "last_seen": "2026-06-22",
+      "last_snapshot": "models_explore_snapshot_image_2026-06-22.json",
+      "type": "image"
+    },
+    "llm_text": {
+      "last_seen": "2026-08-07",
+      "last_snapshot": "models_explore_snapshot_2026-08-07.json",
+      "type": "video"
+    }
+  }
+}
