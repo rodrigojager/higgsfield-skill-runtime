@@ -1,28 +1,24 @@
-# Higgsfield skill runtime
+# Higgsfield Skill Runtime
 
-Rodrigo's reduced English library for the `higgsfield-specialist` Pi agent. The [higgsfield](higgsfield/SKILL.md) folder contains 36 skills and the production resources they use: creative references, templates, cached platform schemas, job memory, and delivery preflight helpers.
+A portable English skill bundle for planning and producing images and video with Higgsfield. It includes a [main skill](higgsfield/SKILL.md), 35 specialist skills, creative references, templates, dated model schemas, and Python helpers.
 
-Reduced from 226 files to 120, from 6,669,808 bytes to approximately 2.62 MB. See [CHANGES.md](CHANGES.md) for the removed material and operational adaptations. This repository starts with the reduced bundle; the complete upstream package and its skill-development tests are not included.
+The main skill routes requests for prompt writing, camera and motion direction, storyboards, character design, production planning, and delivery checks to the relevant specialist files.
 
-## Source and attribution
+## Install and use
 
-Derived from [OSideMedia/higgsfield-ai-prompt-skill](https://github.com/OSideMedia/higgsfield-ai-prompt-skill), upstream tag `v3.40.0`, commit `70754977d1884794963ac0a748eaaa85b6e9c82a`. The original O-Side Media MIT attribution is preserved in [LICENSE](LICENSE) and the installed skill bundle. Local runtime version: `3.40.0-rodrigo.1`.
+1. Download the [release ZIP](https://github.com/rodrigojager/higgsfield-skill-runtime/releases/latest) or clone this repository.
+2. Copy the complete `higgsfield/` folder into the skills directory configured for your agent. Keep its name and internal paths so the main skill can find its specialist instructions and resources.
+3. Invoke the `higgsfield` skill through your agent or direct it to read `higgsfield/SKILL.md`. You can use the bundle with agents that load Markdown skills and can read their companion files, including Codex, Claude Code, and OpenCode.
 
-## Use with Pi
-
-The installed library belongs at `~/.agents/skills/higgsfield`, shared globally. Pi discovers the root skill automatically; add `~/.agents/skills/higgsfield/skills` to the `skills` array in `~/.pi/agent/settings.json` to expose the 35 nested skills.
-
-The English [higgsfield-specialist profile and native MCP configuration](https://github.com/rodrigojager/pi-home-kit/tree/main/profiles/higgsfield-specialist) are published separately. The profile defaults to `openai-codex/gpt-6.1-sol`, high thinking, with the model and thinking selectable in Pi.
-
-Release ZIPs contain only the `higgsfield/` runtime folder. They contain no credentials. The local MCP sign-in remains `/mcp login higgsfield`; configuring a profile does not authenticate a service account.
+Prompt drafting and creative planning can use the bundled references. The local production checks use Python's standard library. Live model discovery, cost estimates, and generation require separately configured access through the Higgsfield CLI or MCP. Check the current model schema and price before paid requests. Keep project inputs and deliverables in the project workspace.
 
 ## Production helpers
 
-- `scripts/preflight.py`: checks request parameters, media roles, and cached platform constraints before execution.
-- `scripts/seedance_lint.py`: checks production prompt structure and known failure patterns.
-- `scripts/higgsfield_memory.py`: reads and records delivery outcomes, recalls known issues, and reports credit history and routing.
-- `scripts/sub_skill_descriptions.py`: the domain-skill roster required by routing memory.
+- `higgsfield/scripts/preflight.py` checks request parameters and media requirements.
+- `higgsfield/scripts/seedance_lint.py` checks Seedance prompt structure and common failure patterns.
+- `higgsfield/scripts/higgsfield_memory.py` looks up production history and records delivery outcomes.
+- `higgsfield/scripts/sub_skill_descriptions.py` supplies the specialist roster to the memory helper.
 
-These helpers use Python's standard library. Cached schemas retain their dated platform provenance; verify live MCP schemas and costs before paid requests, especially when cached data is old or a model is unknown. The helpers do not submit paid generations.
+## Source and license
 
-Delivery inputs and outputs belong in the current project's workspace; create the folders on demand. The shared installation contains skill resources rather than project deliverables.
+This reduced runtime is based on [OSideMedia/higgsfield-ai-prompt-skill](https://github.com/OSideMedia/higgsfield-ai-prompt-skill), upstream tag `v3.40.0` at commit `70754977d1884794963ac0a748eaaa85b6e9c82a`. The original O-Side Media MIT attribution is preserved in [LICENSE](LICENSE). See [CHANGES.md](CHANGES.md) for the reduction and prior delivery checks.
